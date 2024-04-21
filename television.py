@@ -6,55 +6,50 @@ class Television():
     MIN_CHANNEL = 0
     MAX_CHANNEL = 3
 
-def __init__(self):
-    self.status == False
-    self.muted = False
-    self.volume = 0
-    self.channel = 0
+    def __init__(self):
+        self._status = False
+        self._muted = False
+        self._volume = Television.MIN_VOLUME
+        self._channel = Television.MIN_CHANNEL
 
-def power(self):
-    if self.status == False:
-        self.status = True
-    elif self.status == True:
-        self.status == False
-        
-def mute(self):
-    if self.muted == False:
-        self.muted = True
-    elif self.muted == True:
-        self.muted == False
+    def power(self):
+        self._status ^= True
+            
+    def mute(self):
+        if self._status:
+            self._muted ^= True
 
-def channel_up(self):
-    if self.channel < 3:
-        self.channel += 1
-    else:
-        self.channel = 0
+    def channel_up(self):
+        if self._status:
+            if self._channel < Television.MAX_CHANNEL: 
+                self._channel += 1
+            else:
+                self._channel = Television.MIN_CHANNEL
 
+    def channel_down(self):
+        if self._status:
+            if self._channel > Television.MIN_CHANNEL: 
+                self._channel -= 1
+            else:
+                self._channel = Television.MAX_CHANNEL
 
-def channel_down(self):
-    if self.channel > 0:
-        self.channel -= 1
-    else:
-        self.channel = 3
+    def volume_up(self):
+        if self._status:
+            self._muted = False
+            if self._volume < Television.MAX_VOLUME: 
+                self._volume += 1
+            
 
-def volume_up(self):
-    if self.volume < 2:
-        self.volume += 1
-    else:
-        self.volume = 0
+    def volume_down(self):
+        if self._status:
+            self._muted = False
+            if self._volume > Television.MIN_VOLUME: 
+                self._volume -= 1
 
-
-def volume_down(self):
-    if self.volume > 0:
-        self.volume -= 1
-    else:
-        self.volume = 2
-
-def __str__(self):
-    shit = 'fuck'
-
-    
-
-
-
+    def __str__(self):
+        if self._muted == True:
+            return f"Power = {self._status}, Channel = {self._channel}, Volume = {Television.MIN_VOLUME}"
+        else:
+            return f"Power = {self._status}, Channel = {self._channel}, Volume = {self._volume}"
+            
     
