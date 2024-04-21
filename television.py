@@ -14,7 +14,7 @@ class Television():
 
     def power(self) -> None:
         """
-        Method the turns the tv on and off
+        Method that turns the tv on and off
         """
         self.__status ^= True
             
